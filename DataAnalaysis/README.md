@@ -71,3 +71,20 @@ FROM acc_intakes.acc_intakes
 ORDER BY NAME
 ```
 ![image](https://user-images.githubusercontent.com/35404137/101335654-d5fbfb00-38bc-11eb-8d88-556b413640ed.png)
+
+6.CASE
+---
+> 조건에 따라 컬럼의 값 지정
+
+```mysql
+SELECT sex_upon_intake,
+    CASE
+        WHEN sex_upon_intake LIKE '%Sprayed%' OR
+             sex_upon_intake LIKE '%Neutered%' THEN '중성화'
+        WHEN sex_upon_intake LIKE '%Unknown%' THEN '모름'
+        ELSE '중성화 하지 않음'
+    END AS '중성화 여부'
+FROM acc_intakes.aac_intakes
+```
+
+![image](https://user-images.githubusercontent.com/35404137/101337413-f927aa00-38be-11eb-8c34-8ba57dd81e16.png)

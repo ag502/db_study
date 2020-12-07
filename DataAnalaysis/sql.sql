@@ -8,3 +8,13 @@ ORDER BY name;
 # ALIAS
 SELECT COALESCE(name, 'N/A') AS 'NAME' FROM acc_intakes.aac_intakes
 ORDER BY NAME;
+
+#CASE
+SELECT sex_upon_intake,
+    CASE
+        WHEN sex_upon_intake LIKE '%Sprayed%' OR
+             sex_upon_intake LIKE '%Neutered%' THEN '중성화'
+        WHEN sex_upon_intake LIKE '%Unknown%' THEN '모름'
+        ELSE '중성화 하지 않음'
+    END AS '중성화 여부'
+FROM acc_intakes.aac_intakes;
