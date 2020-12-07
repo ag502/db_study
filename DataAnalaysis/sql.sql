@@ -18,3 +18,6 @@ SELECT sex_upon_intake,
         ELSE '중성화 하지 않음'
     END AS '중성화 여부'
 FROM acc_intakes.aac_intakes;
+
+#DISTINCT
+SELECT DISTINCT(animal_type) FROM acc_intakes.aac_intakes;

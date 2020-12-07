@@ -88,3 +88,14 @@ FROM acc_intakes.aac_intakes
 ```
 
 ![image](https://user-images.githubusercontent.com/35404137/101337413-f927aa00-38be-11eb-8c34-8ba57dd81e16.png)
+
+7.DISTINCT
+---
+> 중복되는 컬럼의 제거 후 조회
+
+```mysql
+SELECT DISTINCT(animal_type) FROM acc_intakes.acc_intakes
+```
+DISTINCT 사용 전 | DISTINCT 사용 후
+:-------------------------:|:-------------------------:
+![image](https://user-images.githubusercontent.com/35404137/101338197-01ccb000-38c0-11eb-982c-6da7c157273c.png)  | ![image](https://user-images.githubusercontent.com/35404137/101338045-c9c56d00-38bf-11eb-86ce-c861f8801acb.png)
