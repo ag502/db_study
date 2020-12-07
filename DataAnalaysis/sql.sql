@@ -4,3 +4,7 @@ ORDER BY name;
 
 SELECT IF(name IS NULL, '이름 없음', name) FROM acc_intakes.aac_intakes
 ORDER BY name;
+
+# ALIAS
+SELECT COALESCE(name, 'N/A') AS 'NAME' FROM acc_intakes.aac_intakes
+ORDER BY NAME;

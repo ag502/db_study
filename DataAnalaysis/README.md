@@ -60,3 +60,14 @@ ORDER BY name
 ```
 ![image](https://user-images.githubusercontent.com/35404137/101333334-d6df5d80-38b9-11eb-95a2-3e58cf69f88e.png)
 
+5.ALIAS
+---
+>컬럼의 이름을 지정. <br/>
+>공백이 있다면 ''로 감싸 줘야 함.
+
+```mysql
+SELECT COALESCE(name, '이름 없음') AS 'NAME'
+FROM acc_intakes.acc_intakes
+ORDER BY NAME
+```
+![image](https://user-images.githubusercontent.com/35404137/101335654-d5fbfb00-38bc-11eb-8d88-556b413640ed.png)
