@@ -21,3 +21,8 @@ FROM acc_intakes.aac_intakes;
 
 #DISTINCT
 SELECT DISTINCT(animal_type) FROM acc_intakes.aac_intakes;
+
+# 문자열 함수
+SELECT SUBSTRING(name, 1, 3) FROM acc_intakes.aac_intakes;
+
+SELECT RPAD(name, 10, '0') FROM acc_intakes.aac_intakes;

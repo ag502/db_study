@@ -99,3 +99,29 @@ SELECT DISTINCT(animal_type) FROM acc_intakes.acc_intakes
 DISTINCT 사용 전 | DISTINCT 사용 후
 :-------------------------:|:-------------------------:
 ![image](https://user-images.githubusercontent.com/35404137/101338197-01ccb000-38c0-11eb-982c-6da7c157273c.png)  | ![image](https://user-images.githubusercontent.com/35404137/101338045-c9c56d00-38bf-11eb-86ce-c861f8801acb.png)
+
+8.문자열 관련 함수
+---
+> SUBSTRING(컬럼명, 시작위치, 갯수) <br/>
+> LENGTH <br/>
+> UPPER, LOWER <br/>
+> LPAD, RPAD <br/>
+> TRIM, LTRIM, RTIRM
+
+* SUBSTRING
+```mysql
+# 시작 위치 부터 갯 수 만큼 trimming
+SELECT SUBSTRING(name, 1, 3) FROM acc_intakes.acc_intakes
+```
+사용 전 | 사용 후
+:---:|:---:
+![image](https://user-images.githubusercontent.com/35404137/101339201-72280100-38c1-11eb-8025-0408ced0475c.png) | ![image](https://user-images.githubusercontent.com/35404137/101339060-3b51eb00-38c1-11eb-89d4-3f39a00b1a9d.png)
+
+* LPAD, RPAD
+> L(R)PAD(컬럼명, 총 문자열 길이, 채울 문자열)
+```mysql
+SELECT RPAD(name, 10, '0') FROM acc_intakes.acc_intakes
+```
+사용 전 | 사용 후
+:---:|:---:
+![image](https://user-images.githubusercontent.com/35404137/101339201-72280100-38c1-11eb-8025-0408ced0475c.png) | ![image](https://user-images.githubusercontent.com/35404137/101343172-f16c0380-38c6-11eb-9202-8f4570f43110.png)
