@@ -26,10 +26,37 @@ SELECT * FROM DATABASE.TABLE
 WHERE column IS NOT NULL;
 ```                        
 
-3.COALEACSE
+3.COALESCE
 ---
 > NULL값을 다른 값으로 대체
 ```mysql
 # height가 NULL일시 N/A로 값 대체
-SELECT COLEACSE(height, 'N/A') FROM DATABASE.TABLE;
-```                                                      
+SELECT COLEASCE(height, 'N/A') FROM DATABASE.TABLE;
+``` 
+```mysql
+# height NULL일 경우 weight / 10으로 대체,
+# weight도 NULL일 경우 N/A로 대체
+SELECT COALESCE(height, weight / 10, 'N/A') FROM DATABASE.TABLE;
+```              
+
+4.IFNULL, IF
+---           
+```mysql
+SELECT name FROM acc_intakes.accintakes
+ORDER BY name;
+```
+![image](https://user-images.githubusercontent.com/35404137/101333206-b0b9bd80-38b9-11eb-8761-284d6622cf00.png)
+
+```mysql
+SELECT IFNULL(name, '이름 없음') FROM acc_intakes.acc_intakes
+ORDER BY name
+```
+![image](https://user-images.githubusercontent.com/35404137/101333334-d6df5d80-38b9-11eb-95a2-3e58cf69f88e.png)
+
+```mysql
+# IF(조건, 참 일시 반환 값, 거짓 일시 반환 값)
+SELECT IF(name IS NULL, '이름 없음', name) FROM acc_intakes.acc_intakes
+ORDER BY name
+```
+![image](https://user-images.githubusercontent.com/35404137/101333334-d6df5d80-38b9-11eb-95a2-3e58cf69f88e.png)
+
