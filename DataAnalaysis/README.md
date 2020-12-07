@@ -125,3 +125,55 @@ SELECT RPAD(name, 10, '0') FROM acc_intakes.acc_intakes
 사용 전 | 사용 후
 :---:|:---:
 ![image](https://user-images.githubusercontent.com/35404137/101339201-72280100-38c1-11eb-8025-0408ced0475c.png) | ![image](https://user-images.githubusercontent.com/35404137/101343172-f16c0380-38c6-11eb-9202-8f4570f43110.png)
+
+9.GROUP BY
+---
+> 정한 기준으로 row들을 그룹화 <br/>
+> 그룹화 한 컬럼명과 집계함수(COUNT, SUM, AVG, MAX, MIN...) 만 SELECT문 에 사용 가능. <br/>
+> 집계함수 사용 시 그룹화 된 컬럼별로 실행.
+```mysql
+SELECT name, COUNT(*) AS 'NUM_OF_NAME' FROM acc_intakes.acc_intakes
+GROUP BY name
+ORDER BY name;
+```
+![image](https://user-images.githubusercontent.com/35404137/101366861-d14d3c00-38e8-11eb-84bd-c2d7da8f8e67.png)
+
+> 여러 조건으로 그룹화 가능. <br/>
+
+![image](https://user-images.githubusercontent.com/35404137/101367560-a1eaff00-38e9-11eb-919e-d17809c3802b.png)
+
+* HAVING
+    > GROUP화 한 컬럼의 조건 설정
+    ```mysql
+    SELECT name, animal_type FROM acc_intakes.acc_intakes
+    GROUP BY name, animal_type
+    HAVING animal_type <> 'Other'
+    ORDER BY name;
+    ```
+  
+  ![image](https://user-images.githubusercontent.com/35404137/101368329-5a18a780-38ea-11eb-8cd9-382da03b10e2.png)
+
+* WITH ROLLUP
+    > 큰 단위의 그룹으로 중간 총계를 구해줌. <br/>
+    > 그룹화 한 컬럼 역순으로 그룹화를 풀어 총계 계산 <br/>
+    ```mysql
+    SELECT name, animal_type, intake_condition FROM acc_intakes.acc_intakes
+    GROUP BY name, animal_type
+    WITH ROLLUP
+    ORDER BY name;
+    ```
+  ![image](https://user-images.githubusercontent.com/35404137/101369732-fd1df100-38eb-11eb-802e-52f4bd1bcd91.png)
+
+* GROUPING
+    > 총 합을 나타내기 위해 사용된 NULL인지 실제 NULL인지 구분 할 수 있음. <br/>
+    > 총 합을 나타내는 경우: 1, 실제 NULL: 0
+    
+    ```mysql
+    SELECT name, animal_type, intake_condition, COUNT(*),
+    GROUPING(name), GROUPING(animal_type), GROUPING(intake_condition)
+    FROM acc_intakes.acc_intakes
+    WITH ROLLUP
+    ORDER BY name;
+    ```
+  
+    ![image](https://user-images.githubusercontent.com/35404137/101371249-deb8f500-38ed-11eb-9f03-707e53eb99ae.png)

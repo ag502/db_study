@@ -26,3 +26,28 @@ SELECT DISTINCT(animal_type) FROM acc_intakes.aac_intakes;
 SELECT SUBSTRING(name, 1, 3) FROM acc_intakes.aac_intakes;
 
 SELECT RPAD(name, 10, '0') FROM acc_intakes.aac_intakes;
+
+# GROUP BY
+SELECT name, COUNT(*) AS 'NUM OF SAME NAME' FROM acc_intakes.aac_intakes
+GROUP BY name
+ORDER BY name;
+
+SELECT name, animal_type, COUNT(*) FROM acc_intakes.aac_intakes
+GROUP BY name, animal_type
+ORDER BY name;
+
+SELECT name, animal_type FROM acc_intakes.aac_intakes
+GROUP BY name, animal_type
+HAVING animal_type <> 'Other'
+ORDER BY name;
+
+SELECT name, animal_type, intake_condition, COUNT(*) AS NUM_OF_NAME FROM acc_intakes.aac_intakes
+GROUP BY name, animal_type, intake_condition
+WITH ROLLUP
+ORDER BY name;
+
+SELECT name, animal_type, intake_condition, COUNT(*), GROUPING(name), GROUPING(animal_type), GROUPING(intake_condition)
+FROM acc_intakes.aac_intakes
+GROUP BY name, animal_type, intake_condition
+WITH ROLLUP
+ORDER BY name;
